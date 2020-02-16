@@ -1,20 +1,27 @@
-import * as WebBrowser from 'expo-web-browser';
+import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
-import { ImageBackground, Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import BackgroundContainer from '../components/BackgroundContainer';
 import Button from '../components/Button';
 import LogoHome from '../components/LogoHome';
 
 
 export default function HomeScreen() {
+  const navigation = useNavigation()
+  console.log("Dante: HomeScreen -> navigation", navigation)
+
+  const handlePressPlay = () => {
+    navigation.navigate('Game')
+    console.log("clickeado")
+  }
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../assets/images/background_home.png')} style={{width: '100%', height: '100%'}}>
-        <View style={styles.homeContainer}>
+      <BackgroundContainer>
           <Text>Score: 123</Text>
           <LogoHome/>
-          <Button size='giant'>PLAY NOW!</Button>
-        </View>
-      </ImageBackground>
+          <Button 
+          onPress={handlePressPlay} size='giant'>PLAY NOW!</Button>
+      </BackgroundContainer> 
     </View>
   );
 }
@@ -23,20 +30,9 @@ HomeScreen.navigationOptions = {
   header: null,
 };
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  homeContainer: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    paddingBottom: 40,
-    justifyContent: 'space-between',
   },
   developmentModeText: {
     marginBottom: 20,

@@ -22,9 +22,6 @@ const styles = StyleSheet.create({
     boxShadow: '0px 0px 0px 3px #7b7b7b40',
     height: 44,
     borderRadius: 14,
-    '&:hover': {
-      backgroundColor: '#ff930',
-    }
   },
   text: {
     fontSize: '22px',
