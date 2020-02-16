@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderColor: '#5c5c5c57',
     borderWidth: 4,
-    boxShadow: '0px 0px 0px 3px #5c5c5c33',
+    boxShadow: '0px 0px 0px 3px #7b7b7b40',
     height: 44,
     borderRadius: 14,
     '&:hover': {
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: '22px',
     fontWeight: 'bold',
-    textShadowColor: '#f08d08',
+    textShadowColor: '#5c5c5c69',
     textShadowOffset: {width:2, height: 2},
     textShadowRadius: 0
   }

@@ -1,17 +1,18 @@
-import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
-
-import { MonoText } from '../components/StyledText';
+import * as React from 'react';
+import { ImageBackground, Platform, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/Button';
+
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <Button size='giant'>PLAY NOW!</Button>
-      </ScrollView>
+      <ImageBackground source={require('../assets/images/background_home.png')} style={{width: '100%', height: '100%'}}>
+        <View style={styles.homeContainer}>
+          <Text>Score: 123</Text>
+          <Button size='giant'>PLAY NOW!</Button>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -20,44 +21,20 @@ HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
 function handleLearnMorePress() {
   WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
-  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  homeContainer: {
+    flex: 1,
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    paddingVertical: 20,
+    paddingBottom: 40,
+    justifyContent: 'space-between',
   },
   developmentModeText: {
     marginBottom: 20,
