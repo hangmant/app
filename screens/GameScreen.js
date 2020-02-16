@@ -4,11 +4,15 @@ import BackgroundContainer from '../components/BackgroundContainer'
 import Keyboard from '../components/Keyboard'
 
 const GameScreen = () => {
+
+  const handlePressKey = (key) => {
+    console.log('Key  pressed: ', key)
+  }
   return (
     <View style={styles.container}>
       <BackgroundContainer>
         <Text>JOJOJOJ</Text> 
-        <Keyboard/>
+        <Keyboard onPressKey={handlePressKey}/>
       </BackgroundContainer>
     </View>
   )

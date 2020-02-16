@@ -3,8 +3,13 @@ import { View, StyleSheet } from 'react-native'
 import Letter from './Letter'
 import { useLanguageLetters } from '../hooks/useLanguageLetters'
 
-const Keyboard = React.memo(() => {
+const Keyboard = React.memo(({
+  onPressKey = () => {}
+}) => {
   const letterColumns = useLanguageLetters()
+
+  const handleClickKey = (key) => () => onPressKey(key)
+
   return (
     <View>
       {
@@ -12,7 +17,7 @@ const Keyboard = React.memo(() => {
           return (
             <View style={styles.letterColumn}>
               {
-                letters.map(letter => <Letter>{letter}</Letter>)
+                letters.map(letter => <Letter onPress={handleClickKey(letter)}>{letter}</Letter>)
               }
             </View>
           )
