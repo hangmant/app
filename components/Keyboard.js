@@ -2,9 +2,10 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Letter from './Letter'
 import { useLanguageLetters } from '../hooks/useLanguageLetters'
+import { noop } from '../utils/miscellaneous'
 
 const Keyboard = React.memo(({
-  onPressKey = () => {}
+  onPressKey = noop
 }) => {
   const letterColumns = useLanguageLetters()
 

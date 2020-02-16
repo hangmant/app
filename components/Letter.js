@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     borderRightWidth: 0,
     borderColor: '#5c5c5c57',
     borderWidth: 2,
-    boxShadow: '0px 0px 0px 2px #7b7b7b40',
+    // boxShadow: '0px 0px 0px 2px #7b7b7b40',
     paddingHorizontal: 0,
     borderRadius: 8,
   },
   text: {
-    fontSize: '16px',
+    fontSize: 16,
     fontWeight: '500',
     marginHorizontal: 0,
     color: '#6b7073'
