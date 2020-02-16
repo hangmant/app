@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { ImageBackground, Platform, StyleSheet, Text, View } from 'react-native';
 import Button from '../components/Button';
+import LogoHome from '../components/LogoHome';
 
 
 export default function HomeScreen() {
@@ -10,6 +11,7 @@ export default function HomeScreen() {
       <ImageBackground source={require('../assets/images/background_home.png')} style={{width: '100%', height: '100%'}}>
         <View style={styles.homeContainer}>
           <Text>Score: 123</Text>
+          <LogoHome/>
           <Button size='giant'>PLAY NOW!</Button>
         </View>
       </ImageBackground>
