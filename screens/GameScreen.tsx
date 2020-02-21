@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import BackgroundContainer from '../components/BackgroundContainer'
 import Keyboard from '../components/Keyboard'
+import Man from '../components/Man'
 
 const GameScreen = () => {
 
@@ -12,6 +13,7 @@ const GameScreen = () => {
     <View style={styles.container}>
       <BackgroundContainer>
         <Text>JOJOJOJ</Text> 
+        <Man/>
         <Keyboard onPressKey={handlePressKey}/>
       </BackgroundContainer>
     </View>
