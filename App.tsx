@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, AppRegistry } from 'react-native';
 import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 
