@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import GameScreen from './screens/GameScreen';
+import ApolloProvider from './apollo/ApolloProvider';
 
 const Stack = createStackNavigator();
 
@@ -51,17 +52,19 @@ export default function App(props) {
     return null;
   } else {
     return (
-      <ApplicationProvider  mapping={mapping} theme={lightTheme}>
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-            <Stack.Navigator>
-              <Stack.Screen name="Root" component={BottomTabNavigator} />
-              <Stack.Screen name="Game" component={GameScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </View>
-      </ApplicationProvider>
+      <ApolloProvider>
+        <ApplicationProvider  mapping={mapping} theme={lightTheme}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
+              <Stack.Navigator>
+                <Stack.Screen name="Root" component={BottomTabNavigator} />
+                <Stack.Screen name="Game" component={GameScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </View>
+        </ApplicationProvider>
+      </ApolloProvider>
     );
   }
 }

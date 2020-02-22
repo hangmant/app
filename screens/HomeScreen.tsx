@@ -5,7 +5,6 @@ import BackgroundContainer from '../components/BackgroundContainer';
 import Button from '../components/Button';
 import LogoHome from '../components/LogoHome';
 
-
 export default function HomeScreen() {
   const navigation = useNavigation()
   console.log("Dante: HomeScreen -> navigation", navigation)
