@@ -1,26 +1,23 @@
-import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
 import BackgroundContainer from '../components/BackgroundContainer'
 import Keyboard from '../components/Keyboard'
 import Man from '../components/Man'
-import { useQuery } from '@apollo/react-hooks';
-import { GET_RANDOM_WORDS } from '../apollo/queries';
+import { useWordManager } from '../hooks/useWordManager'
 
 const GameScreen = ({
   categoryId
 }) => {
   const handlePressKey = (key) => {
+    nextWord()
     console.log('Key  pressed: ', key)
   }
 
-  const [words, setWords] = useState([])
 
-  const { data } = useQuery(GET_RANDOM_WORDS,  {
-    variables: {
-      ...(categoryId ? { categoryId } : {})
-    }
-  })
-  console.log("Dante: data", data)
+  const { word, nextWord, loading } = useWordManager({})
+  console.log("Dante: nextWord", nextWord)
+  console.log("Dante: loading", loading)
+  console.log("Dante: word", word)
 
 
   return (
