@@ -11,6 +11,7 @@ import { fillWithLetter, areEqualsLowercase } from '../utils/word'
 import { usePressedLetters } from '../hooks/usePressedLetters'
 import ResultGame from '../components/ResultGame'
 import { useNavigation } from '@react-navigation/native'
+import CategoryGame from '../components/CategoryGame'
 
 const GameScreen = ({
   categoryId
@@ -73,9 +74,10 @@ const GameScreen = ({
         onClickBack={goToHome}
         onClickNext={handleClickNext}/>
       {
-        loading ?
+        loading || !word ?
         <Text>Loading</Text>:
         <BackgroundContainer>
+          <CategoryGame word={word}/>
           <Man/>
           <Filler wordToFill={wordToFill}/>
           <Keyboard 
