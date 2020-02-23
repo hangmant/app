@@ -9,12 +9,15 @@ import Filler from '../components/Filler'
 import { Word } from '../interfaces/Word'
 import { fillWithLetter, areEqualsLowercase } from '../utils/word'
 import { usePressedLetters } from '../hooks/usePressedLetters'
+import ResultGame from '../components/ResultGame'
+import { useNavigation } from '@react-navigation/native'
 
 const GameScreen = ({
   categoryId
 }) => {
-
   const [wordToFill, setWordToFill] = useState<string>('')
+  const navigation = useNavigation()
+  const [ resultVisible, setResultVisible] = useState(false)
   const {
     correct,
     incorrect,
@@ -38,10 +41,20 @@ const GameScreen = ({
     }
   }
   
+  const handleClickNext = () => {
+    setResultVisible(false)
+    nextWord()
+    console.log('Dante aca ejecutar la siguiente')
+  }
+
+  const goToHome = () => {
+    setResultVisible(false)
+    navigation.replace('Root', {})
+  }
+
   useEffect(() => {
     if(word && areEqualsLowercase(word.name, wordToFill)) {
-      console.log('Dante: GANASTEEEEEE')
-      nextWord()
+      setResultVisible(true)
     }
   }, [wordToFill])
 
@@ -54,6 +67,11 @@ const GameScreen = ({
 
   return (
     <View style={styles.container}>
+      <ResultGame 
+        win={word && areEqualsLowercase(word.name, wordToFill)}
+        visible={resultVisible} 
+        onClickBack={goToHome}
+        onClickNext={handleClickNext}/>
       {
         loading ?
         <Text>Loading</Text>:
