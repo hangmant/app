@@ -62,7 +62,7 @@ const GameScreen = ({
   useEffect(() => {
     if(word) {
       restartLetters()
-      setWordToFill(word.name.replace(/[^\s]/gi, '-'))
+      setWordToFill(word.name.replace(/[^\s]/gi, '_'))
     }
   },[word])
 
