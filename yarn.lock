@@ -6413,6 +6413,11 @@ slide@^1.1.5:
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
   integrity sha1-VusCfWW00tzmyy4tMsTUr8nh1wc=
 
+slsx@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/slsx/-/slsx-0.0.2.tgz#f43677a48155ab2a4c9516fd9040c859a8e81122"
+  integrity sha512-Ri6pcmXdu8xc3Eu6P3oRBqN/UEZEGHy6Lr/aV/mnpUkGUbBo8NQX+YMx+poTP+I9R2bh3DhiZkNiA5PVwPIOhg==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"

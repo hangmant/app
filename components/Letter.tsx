@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { Button } from '@ui-kitten/components';
-import { slsx } from '../utils/slsx';
+import slsx from 'slsx'
 
 const Letter = ({ children, disabled, isCorrect, ...props}) => {
 
