@@ -1,28 +1,46 @@
 import React, { useState } from 'react'
-import { View, Image } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 const images = [
-  require(`../assets/images/man/7.jpg`),  
-  require(`../assets/images/man/6.jpg`),  
-  require(`../assets/images/man/5.jpg`),  
-  require(`../assets/images/man/4.jpg`),  
-  require(`../assets/images/man/3.jpg`),  
-  require(`../assets/images/man/2.jpg`),  
-  require(`../assets/images/man/1.jpg`),  
-  require(`../assets/images/man/0.jpg`),  
+  require(`../assets/images/man/7.png`),  
+  require(`../assets/images/man/6.png`),  
+  require(`../assets/images/man/5.png`),  
+  require(`../assets/images/man/4.png`),  
+  require(`../assets/images/man/3.png`),  
+  require(`../assets/images/man/2.png`),  
+  require(`../assets/images/man/1.png`),  
+  require(`../assets/images/man/0.png`),  
 ]
 
-const Man = React.memo(({ 
+interface ManProps {
+  lives: number
+}
+
+const Man: React.FC<ManProps> = React.memo(({ 
   lives
-}) => {
-  return (
-    <View>
+}) => (
+    <View style={styles.container}>
       <Image
-        style={{width: 400, height: 300}}
+        style={styles.image}
         source={images[lives]}
       />
     </View>
-  )
+))
+
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center'
+  },
+  image: {
+    width: 73,
+    borderLeftColor: '#61463c',
+    paddingLeft: 30,
+    borderTopColor: '#61463c',
+    borderLeftWidth: 8,
+    borderTopWidth: 8,
+    height: 195
+  }
 })
 
 export default Man
