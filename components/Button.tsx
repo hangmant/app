@@ -22,11 +22,11 @@ const GameButton = ({ children, ...props}) => {
   }
 
   return (
-    <BoxShadow setting={shadowOpt}>
+    // <BoxShadow setting={shadowOpt}>
       <Button {...props} underlayColor={'blue'} textStyle={styles.text} style={styles.button}>
         {children}
       </Button>
-    </BoxShadow>
+    // </BoxShadow>
   )
 }
 

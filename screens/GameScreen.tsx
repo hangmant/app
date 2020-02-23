@@ -8,21 +8,32 @@ import { Text } from '@ui-kitten/components'
 import Filler from '../components/Filler'
 import { Word } from '../interfaces/Word'
 import { fillWithLetter, areEqualsLowercase } from '../utils/word'
+import { usePressedLetters } from '../hooks/usePressedLetters'
 
 const GameScreen = ({
   categoryId
 }) => {
 
   const [wordToFill, setWordToFill] = useState<string>('')
+  const {
+    correct,
+    incorrect,
+    addCorrectLetter,
+    addIncorrectLetter,
+    restartLetters
+   } = usePressedLetters()
   
   const { word, nextWord, loading } = useWordManager({})
   console.log("Dante: word", word)
   
-  const handlePressKey = (letter) => {
+  const handlePressKey = (letter: string) => {
+    console.log("Dante: handlePressKey -> letter", letter)
     const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
     if(existsLetter) {
+      addCorrectLetter(letter)
       setWordToFill(wordToFill => fillWithLetter(word.name, wordToFill, letter))
     } else {
+      addIncorrectLetter(letter)
       // Restar vidas 
     }
   }
@@ -36,6 +47,7 @@ const GameScreen = ({
 
   useEffect(() => {
     if(word) {
+      restartLetters()
       setWordToFill(word.name.replace(/[^\s]/gi, '-'))
     }
   },[word])
@@ -48,7 +60,10 @@ const GameScreen = ({
         <BackgroundContainer>
           <Man/>
           <Filler wordToFill={wordToFill}/>
-          <Keyboard onPressKey={handlePressKey}/>
+          <Keyboard 
+            onPressKey={handlePressKey}
+            correctLetters={correct}
+            incorrectLetters={incorrect}/>
         </BackgroundContainer>
       }
     </View>

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 28,
     textAlign: 'center',
-    fontFamily: 'monospace, Courier'
+    fontFamily: 'monospace'
   }
 })
 

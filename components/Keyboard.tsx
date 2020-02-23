@@ -5,8 +5,12 @@ import { useLanguageLetters } from '../hooks/useLanguageLetters'
 import { noop } from '../utils/miscellaneous'
 
 const Keyboard = React.memo(({
-  onPressKey = noop
+  onPressKey = noop,
+  correctLetters,
+  incorrectLetters
 }) => {
+  console.log("Dante: correctLetters", correctLetters)
+  console.log("Dante: incorrectLetters", incorrectLetters)
   const letterColumns = useLanguageLetters()
 
   const handleClickKey = (key) => () => onPressKey(key)
@@ -18,7 +22,17 @@ const Keyboard = React.memo(({
           return (
             <View style={styles.letterColumn}>
               {
-                letters.map(letter => <Letter onPress={handleClickKey(letter)}>{letter}</Letter>)
+                letters.map((letter: string) => {
+                  const isDisabled = correctLetters.has(letter.toLowerCase()) || incorrectLetters.has(letter.toLowerCase())
+                  return (
+                    <Letter
+                      disabled={isDisabled}
+                      isCorrect={correctLetters.has(letter.toLowerCase())}
+                      onPress={handleClickKey(letter)}>
+                      {letter}
+                    </Letter>
+                  )
+                })
               }
             </View>
           )
