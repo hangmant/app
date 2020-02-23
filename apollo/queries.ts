@@ -9,6 +9,7 @@ export const GET_RANDOM_WORDS = gql`
       category {
         _id
         name
+        color
       }
     }
   }

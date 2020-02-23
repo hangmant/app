@@ -9,7 +9,7 @@ interface CategoryGameProps {
 
 const CategoryGame: React.FC<CategoryGameProps> = ({ word }) => (
   <View style={[styles.container, {
-    // backgroundColor: word.category.color
+    backgroundColor: word.category.color
   }]}>
     <Text style={styles.categoryName}>{ word.category.name.toUpperCase()}</Text>
   </View>
