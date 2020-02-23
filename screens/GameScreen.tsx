@@ -13,12 +13,16 @@ import ResultGame from '../components/ResultGame'
 import { useNavigation } from '@react-navigation/native'
 import CategoryGame from '../components/CategoryGame'
 
+const NUMBER_OF_LIVES = 7
+
 const GameScreen = ({
   categoryId
 }) => {
   const [wordToFill, setWordToFill] = useState<string>('')
   const navigation = useNavigation()
   const [ resultVisible, setResultVisible] = useState(false)
+  const [lives, setLives] = useState(NUMBER_OF_LIVES)
+  console.log("Dante: lives", lives)
   const {
     correct,
     incorrect,
@@ -37,6 +41,7 @@ const GameScreen = ({
       addCorrectLetter(letter)
       setWordToFill(wordToFill => fillWithLetter(word.name, wordToFill, letter))
     } else {
+      setLives(prev => prev - 1)
       addIncorrectLetter(letter)
       // Restar vidas 
     }
@@ -56,12 +61,15 @@ const GameScreen = ({
   useEffect(() => {
     if(word && areEqualsLowercase(word.name, wordToFill)) {
       setResultVisible(true)
+    } else if(lives === 0) {
+      setResultVisible(true) 
     }
-  }, [wordToFill])
+  }, [wordToFill, lives])
 
   useEffect(() => {
     if(word) {
       restartLetters()
+      setLives(NUMBER_OF_LIVES)
       setWordToFill(word.name.replace(/[^\s]/gi, '_'))
     }
   },[word])
@@ -78,7 +86,7 @@ const GameScreen = ({
         <Text>Loading</Text>:
         <BackgroundContainer>
           <CategoryGame word={word}/>
-          <Man/>
+          <Man lives={lives}/>
           <Filler wordToFill={wordToFill}/>
           <Keyboard 
             onPressKey={handlePressKey}
