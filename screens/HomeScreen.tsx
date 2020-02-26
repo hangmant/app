@@ -7,10 +7,11 @@ import LogoHome from '../components/LogoHome';
 
 export default function HomeScreen() {
   const navigation = useNavigation()
+
   console.log("Dante: HomeScreen -> navigation", navigation)
 
   const handlePressPlay = () => {
-    navigation.navigate('Game')
+    navigation.navigate('Categories')
     console.log("clickeado")
   }
   return (

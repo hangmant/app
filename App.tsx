@@ -13,6 +13,7 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import GameScreen from './screens/GameScreen';
 import ApolloProvider from './apollo/ApolloProvider';
+import CategoryScreen from './screens/CategoryScreen';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,7 @@ export default function App(props) {
             <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
               <Stack.Navigator>
                 <Stack.Screen name="Root" component={BottomTabNavigator} />
+                <Stack.Screen name="Categories" component={CategoryScreen} />
                 <Stack.Screen name="Game" component={GameScreen} />
               </Stack.Navigator>
             </NavigationContainer>
