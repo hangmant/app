@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView, ColorPropType } from 'react-native'
 import { Text, Button } from '@ui-kitten/components'
 import { useQuery } from 'react-apollo'
 import { GET_CATEGORIES } from '../apollo/queries'
 import get from 'lodash.get'
 import { Category } from '../interfaces/Category'
 import { useNavigation } from '@react-navigation/native'
+import color from 'color'
 
 
 const CategoryScreen = () => {
@@ -25,12 +26,11 @@ const CategoryScreen = () => {
           <View key={category._id} style={styles.buttonContainer}>
             <Button 
               style={[
-                styles.button, 
                 { 
                   backgroundColor: category.color,
-                  borderColor: category.color 
+                  borderColor: color(category.color).darken(0.2)
                 }
-              ]}
+              ] as any}
               onPress={handlePressCategory(category._id)}
              >{category.name}</Button>
           </View>
@@ -48,8 +48,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   button: {
-    backgroundColor: 'red',
-    borderColor: 'red'
   }
 })
 
