@@ -1,5 +1,6 @@
 *.min.js
 **/node_modules/**
+**/.expo*
 flow-typed
 
 **/.cache
