@@ -12,17 +12,17 @@ const CategoryScreen = () => {
   const { data } = useQuery(GET_CATEGORIES)
   const navigation = useNavigation()
 
-  const categories: Category[] = get(data, 'categories', [])
+  const categories: Category[] = [
+    {
+      _id: undefined,
+      name: 'Todas',
+      color: '#e91e63',
+    },
+  ].concat(get(data, 'categories', []))
 
   const handlePressCategory = categoryId => () => {
     navigation.navigate('Game', { categoryId })
   }
-
-  categories.unshift({
-    _id: undefined,
-    name: 'Todas',
-    color: '#e91e63',
-  })
 
   return (
     <ScrollView style={styles.container}>
