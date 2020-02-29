@@ -1,19 +1,17 @@
-import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View, AppRegistry } from 'react-native';
-import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
-import { mapping, light as lightTheme } from '@eva-design/eva';
-
-import { SplashScreen } from 'expo';
-import * as Font from 'expo-font';
+import { light as lightTheme, mapping } from '@eva-design/eva';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-import useLinking from './navigation/useLinking';
-import GameScreen from './screens/GameScreen';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { SplashScreen } from 'expo';
+import * as Font from 'expo-font';
+import * as React from 'react';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import ApolloProvider from './apollo/ApolloProvider';
+import useLinking from './navigation/useLinking';
 import CategoryScreen from './screens/CategoryScreen';
+import GameScreen from './screens/GameScreen';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -59,7 +57,7 @@ export default function App(props) {
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
               <Stack.Navigator>
-                <Stack.Screen name="Root" component={BottomTabNavigator} />
+                <Stack.Screen name="Root" component={HomeScreen} />
                 <Stack.Screen name="Categories" component={CategoryScreen} />
                 <Stack.Screen name="Game" component={GameScreen} />
               </Stack.Navigator>
