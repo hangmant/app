@@ -5,9 +5,7 @@ import BackgroundContainer from '../components/BackgroundContainer'
 import Button from '../components/Button'
 import LogoHome from '../components/LogoHome'
 
-export default function HomeScreen() {
-  const navigation = useNavigation()
-
+export default function HomeScreen({ navigation }) {
   console.log('Dante: HomeScreen -> navigation', navigation)
 
   const handlePressPlay = () => {
@@ -19,7 +17,7 @@ export default function HomeScreen() {
       <BackgroundContainer>
         <Text>Score: 123</Text>
         <LogoHome />
-        <Button onPress={handlePressPlay} size="giant">
+        <Button onPress={handlePressPlay} size='giant'>
           PLAY NOW!
         </Button>
       </BackgroundContainer>

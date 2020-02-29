@@ -21,7 +21,7 @@ const CategoryScreen = () => {
   ].concat(get(data, 'categories', []))
 
   const handlePressCategory = categoryId => () => {
-    navigation.navigate('Game', { categoryId })
+    navigation.replace('Game', { categoryId })
   }
 
   return (
