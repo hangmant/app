@@ -1,7 +1,6 @@
-import React from 'react'
-import { StyleSheet, ViewStyle } from 'react-native'
 import { Button } from '@ui-kitten/components'
-import slsx from 'slsx'
+import React from 'react'
+import { StyleSheet } from 'react-native'
 
 type LetterProps = {
   disabled: boolean
@@ -15,10 +14,11 @@ const Letter = ({ children, disabled, isCorrect, ...props }: LetterProps) => (
     {...props}
     disabled={disabled}
     textStyle={styles.text}
-    style={slsx(styles.button, {
-      [styles.correctButton]: disabled && isCorrect,
-      [styles.incorrectButton]: disabled && !isCorrect,
-    })}
+    style={[
+      styles.button,
+      disabled && isCorrect && styles.correctButton,
+      disabled && !isCorrect && styles.incorrectButton,
+    ]}
   >
     {children}
   </Button>

@@ -27,6 +27,7 @@ const Keyboard = React.memo(
                   incorrectLetters.has(letter.toLowerCase())
                 return (
                   <Letter
+                    key={letter}
                     disabled={isDisabled}
                     isCorrect={correctLetters.has(letter.toLowerCase())}
                     onPress={handleClickKey(letter)}
