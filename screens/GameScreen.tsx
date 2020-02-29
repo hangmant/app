@@ -15,38 +15,36 @@ import CategoryGame from '../components/CategoryGame'
 
 const NUMBER_OF_LIVES = 7
 
-const GameScreen = ({
-  categoryId
-}) => {
+const GameScreen = ({ categoryId }) => {
   const [wordToFill, setWordToFill] = useState<string>('')
   const navigation = useNavigation()
-  const [ resultVisible, setResultVisible] = useState(false)
+  const [resultVisible, setResultVisible] = useState(false)
   const [lives, setLives] = useState(NUMBER_OF_LIVES)
-  console.log("Dante: lives", lives)
+  console.log('Dante: lives', lives)
   const {
     correct,
     incorrect,
     addCorrectLetter,
     addIncorrectLetter,
-    restartLetters
-   } = usePressedLetters()
-  
+    restartLetters,
+  } = usePressedLetters()
+
   const { word, nextWord, loading } = useWordManager({})
-  console.log("Dante: word", word)
-  
+  console.log('Dante: word', word)
+
   const handlePressKey = (letter: string) => {
-    console.log("Dante: handlePressKey -> letter", letter)
+    console.log('Dante: handlePressKey -> letter', letter)
     const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
-    if(existsLetter) {
+    if (existsLetter) {
       addCorrectLetter(letter)
       setWordToFill(wordToFill => fillWithLetter(word.name, wordToFill, letter))
     } else {
       setLives(prev => prev - 1)
       addIncorrectLetter(letter)
-      // Restar vidas 
+      // Restar vidas
     }
   }
-  
+
   const handleClickNext = () => {
     setResultVisible(false)
     nextWord()
@@ -59,48 +57,50 @@ const GameScreen = ({
   }
 
   useEffect(() => {
-    if(word && areEqualsLowercase(word.name, wordToFill)) {
+    if (word && areEqualsLowercase(word.name, wordToFill)) {
       setResultVisible(true)
-    } else if(lives === 0) {
-      setResultVisible(true) 
+    } else if (lives === 0) {
+      setResultVisible(true)
     }
   }, [wordToFill, lives])
 
   useEffect(() => {
-    if(word) {
+    if (word) {
       restartLetters()
       setLives(NUMBER_OF_LIVES)
       setWordToFill(word.name.replace(/[^\s]/gi, '_'))
     }
-  },[word])
+  }, [word])
 
   return (
     <View style={styles.container}>
-      <ResultGame 
+      <ResultGame
         win={word && areEqualsLowercase(word.name, wordToFill)}
-        visible={resultVisible} 
+        visible={resultVisible}
         onClickBack={goToHome}
-        onClickNext={handleClickNext}/>
-      {
-        loading || !word ?
-        <Text>Loading</Text>:
+        onClickNext={handleClickNext}
+      />
+      {loading || !word ? (
+        <Text>Loading</Text>
+      ) : (
         <BackgroundContainer>
-          <CategoryGame word={word}/>
-          <Man lives={lives}/>
-          <Filler wordToFill={wordToFill}/>
-          <Keyboard 
+          <CategoryGame word={word} />
+          <Man lives={lives} />
+          <Filler wordToFill={wordToFill} />
+          <Keyboard
             onPressKey={handlePressKey}
             correctLetters={correct}
-            incorrectLetters={incorrect}/>
+            incorrectLetters={incorrect}
+          />
         </BackgroundContainer>
-      }
+      )}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 })
 export default GameScreen

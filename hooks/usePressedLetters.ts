@@ -1,38 +1,37 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export function usePressedLetters() {
   const [pressed, setPressed] = useState({
     correct: [],
-    incorrect: []
+    incorrect: [],
   })
 
-  const addCorrectLetter  = (letter: string) => {
+  const addCorrectLetter = (letter: string) => {
     setPressed(prev => ({
-      ...prev, 
-      correct: prev.correct.concat(letter.toLowerCase())
+      ...prev,
+      correct: prev.correct.concat(letter.toLowerCase()),
     }))
   }
 
-  const addIncorrectLetter  = (letter: string) => {
+  const addIncorrectLetter = (letter: string) => {
     setPressed(prev => ({
-      ...prev, 
-      incorrect: prev.incorrect.concat(letter.toLowerCase())
+      ...prev,
+      incorrect: prev.incorrect.concat(letter.toLowerCase()),
     }))
   }
 
   const restartLetters = () => {
     setPressed({
       correct: [],
-      incorrect: []
-    })   
+      incorrect: [],
+    })
   }
-
 
   return {
     correct: new Set(pressed.correct),
     incorrect: new Set(pressed.incorrect),
     addCorrectLetter,
     addIncorrectLetter,
-    restartLetters
+    restartLetters,
   }
 }

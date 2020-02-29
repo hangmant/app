@@ -8,47 +8,47 @@ import { Category } from '../interfaces/Category'
 import { useNavigation } from '@react-navigation/native'
 import color from 'color'
 
-
 const CategoryScreen = () => {
   const { data } = useQuery(GET_CATEGORIES)
   const navigation = useNavigation()
-  
+
   const categories: Category[] = get(data, 'categories', [])
 
-  const handlePressCategory = (categoryId) => () => {
+  const handlePressCategory = categoryId => () => {
     navigation.navigate('Game', { categoryId })
   }
 
   return (
     <ScrollView style={styles.container}>
-      {
-        categories.map(category => (
-          <View key={category._id} style={styles.buttonContainer}>
-            <Button 
-              style={[
-                { 
+      {categories.map(category => (
+        <View key={category._id} style={styles.buttonContainer}>
+          <Button
+            style={
+              [
+                {
                   backgroundColor: category.color,
-                  borderColor: color(category.color).darken(0.2)
-                }
-              ] as any}
-              onPress={handlePressCategory(category._id)}
-             >{category.name}</Button>
-          </View>
-        ))
-      }
+                  borderColor: color(category.color).darken(0.2),
+                },
+              ] as any
+            }
+            onPress={handlePressCategory(category._id)}
+          >
+            {category.name}
+          </Button>
+        </View>
+      ))}
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   buttonContainer: {
-    paddingVertical: 10
+    paddingVertical: 10,
   },
-  button: {
-  }
+  button: {},
 })
 
 export default CategoryScreen

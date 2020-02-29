@@ -8,6 +8,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "pretty": "prettier --write \"./**/*.{ts,tsx}\"",
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll"
@@ -57,7 +58,9 @@
     "@types/react": "^16.9.21",
     "@types/react-native": "^0.61.16",
     "babel-preset-expo": "~8.0.0",
-    "jest-expo": "~36.0.1"
+    "jest-expo": "~36.0.1",
+    "prettier": "^1.19.1",
+    "tslint": "^6.0.0"
   },
   "private": true
 }

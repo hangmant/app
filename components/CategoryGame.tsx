@@ -8,10 +8,15 @@ interface CategoryGameProps {
 }
 
 const CategoryGame: React.FC<CategoryGameProps> = ({ word }) => (
-  <View style={[styles.container, {
-    backgroundColor: word.category.color
-  }]}>
-    <Text style={styles.categoryName}>{ word.category.name.toUpperCase()}</Text>
+  <View
+    style={[
+      styles.container,
+      {
+        backgroundColor: word.category.color,
+      },
+    ]}
+  >
+    <Text style={styles.categoryName}>{word.category.name.toUpperCase()}</Text>
   </View>
 )
 
@@ -26,8 +31,8 @@ const styles = StyleSheet.create({
   categoryName: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 })
 
 export default CategoryGame

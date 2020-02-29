@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const useQueue = <T>(initialValue: T[] = []) => {
   const [queue, setQueue] = useState(initialValue)
@@ -24,6 +24,6 @@ export const useQueue = <T>(initialValue: T[] = []) => {
     queue,
     enqueue,
     dequeue,
-    clear
+    clear,
   }
 }

@@ -11,13 +11,13 @@ const LogoHome = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
-  },  
+    alignItems: 'center',
+  },
   text: {
     fontWeight: 'bold',
     color: '#795548',
-    fontSize: 50
-  }
+    fontSize: 50,
+  },
 })
 
 export default LogoHome
