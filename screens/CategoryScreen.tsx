@@ -18,10 +18,16 @@ const CategoryScreen = () => {
     navigation.navigate('Game', { categoryId })
   }
 
+  categories.unshift({
+    _id: undefined,
+    name: 'Todas',
+    color: '#e91e63',
+  })
+
   return (
     <ScrollView style={styles.container}>
-      {categories.map(category => (
-        <View key={category._id} style={styles.buttonContainer}>
+      {categories.map((category, index) => (
+        <View key={index} style={styles.buttonContainer}>
           <Button
             style={
               [

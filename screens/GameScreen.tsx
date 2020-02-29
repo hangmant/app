@@ -6,18 +6,21 @@ import Man from '../components/Man'
 import { useWordManager } from '../hooks/useWordManager'
 import { Text } from '@ui-kitten/components'
 import Filler from '../components/Filler'
-import { Word } from '../interfaces/Word'
 import { fillWithLetter, areEqualsLowercase } from '../utils/word'
 import { usePressedLetters } from '../hooks/usePressedLetters'
 import ResultGame from '../components/ResultGame'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import CategoryGame from '../components/CategoryGame'
 
 const NUMBER_OF_LIVES = 7
 
-const GameScreen = ({ categoryId }) => {
+const GameScreen = () => {
   const [wordToFill, setWordToFill] = useState<string>('')
   const navigation = useNavigation()
+  const route = useRoute()
+
+  const { categoryId } = route.params as any
+
   const [resultVisible, setResultVisible] = useState(false)
   const [lives, setLives] = useState(NUMBER_OF_LIVES)
   console.log('Dante: lives', lives)
@@ -29,11 +32,10 @@ const GameScreen = ({ categoryId }) => {
     restartLetters,
   } = usePressedLetters()
 
-  const { word, nextWord, loading } = useWordManager({})
-  console.log('Dante: word', word)
+  const { word, nextWord, loading } = useWordManager({ categoryId })
+  console.log('Dante: GameScreen -> word', word)
 
   const handlePressKey = (letter: string) => {
-    console.log('Dante: handlePressKey -> letter', letter)
     const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
     if (existsLetter) {
       addCorrectLetter(letter)
