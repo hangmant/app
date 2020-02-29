@@ -1,14 +1,16 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
 import { Text } from '@ui-kitten/components'
+import React from 'react'
+import { StyleSheet, View } from 'react-native'
 
-const Filler = ({ wordToFill }) => {
-  return (
-    <View>
-      <Text style={styles.text}>{wordToFill}</Text>
-    </View>
-  )
+type FillerProps = {
+  wordToFill: string
 }
+
+const Filler = ({ wordToFill }: FillerProps) => (
+  <View>
+    <Text style={styles.text}>{wordToFill}</Text>
+  </View>
+)
 
 const styles = StyleSheet.create({
   text: {

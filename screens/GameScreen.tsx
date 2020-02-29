@@ -37,7 +37,7 @@ const GameScreen = ({ categoryId }) => {
     const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
     if (existsLetter) {
       addCorrectLetter(letter)
-      setWordToFill(wordToFill => fillWithLetter(word.name, wordToFill, letter))
+      setWordToFill(w => fillWithLetter(word.name, w, letter))
     } else {
       setLives(prev => prev - 1)
       addIncorrectLetter(letter)

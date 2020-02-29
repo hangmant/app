@@ -12,11 +12,11 @@ const ResultGame = ({
   return (
     <>
       <Modal backdropStyle={styles.backdrop} onBackdropPress={onClose} visible={visible}>
-        <Layout level="3" style={styles.modalContainer}>
+        <Layout level='3' style={styles.modalContainer}>
           <Text style={styles.resultText}>{win ? 'You win' : 'You loose'}</Text>
           <View style={styles.actionsContainer}>
             <View style={styles.buttonContainer}>
-              <Button onPress={onClickBack} appearance="outline">
+              <Button onPress={onClickBack} appearance='outline'>
                 Back To Menu
               </Button>
             </View>

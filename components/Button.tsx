@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button } from '@ui-kitten/components'
-import { BoxShadow } from 'react-native-shadow'
+// import { BoxShadow } from 'react-native-shadow'
 
 const GameButton = ({ children, ...props }) => {
   const shadowOpt = {
@@ -23,7 +23,7 @@ const GameButton = ({ children, ...props }) => {
 
   return (
     // <BoxShadow setting={shadowOpt}>
-    <Button {...props} underlayColor={'blue'} textStyle={styles.text} style={styles.button}>
+    <Button {...props} textStyle={styles.text} style={styles.button}>
       {children}
     </Button>
     // </BoxShadow>
