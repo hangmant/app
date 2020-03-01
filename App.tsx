@@ -12,6 +12,7 @@ import useLinking from './navigation/useLinking'
 import CategoryScreen from './screens/CategoryScreen'
 import GameScreen from './screens/GameScreen'
 import HomeScreen from './screens/HomeScreen'
+import { screenOptions } from './utils/transitionConfig'
 
 const Stack = createStackNavigator()
 
@@ -60,7 +61,12 @@ export default function App(props) {
             <View style={styles.container}>
               <StatusBar barStyle='dark-content' />
               <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-                <Stack.Navigator headerMode='none'>
+                <Stack.Navigator
+                  screenOptions={{
+                    animationEnabled: false,
+                  }}
+                  headerMode='none'
+                >
                   <Stack.Screen name='Root' component={HomeScreen} />
                   <Stack.Screen name='Categories' component={CategoryScreen} />
                   <Stack.Screen name='Game' component={GameScreen} />
