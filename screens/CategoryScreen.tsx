@@ -1,15 +1,14 @@
-import React from 'react'
-import { View, StyleSheet, ScrollView, ColorPropType } from 'react-native'
-import { Text, Button } from '@ui-kitten/components'
-import { useQuery } from 'react-apollo'
-import { GET_CATEGORIES } from '../apollo/queries'
-import get from 'lodash.get'
-import { Category } from '../interfaces/Category'
 import { useNavigation } from '@react-navigation/native'
-import color from 'color'
-import BackgroundContainer from '../components/BackgroundContainer'
-import LegoLoader from '../components/LegoLoader'
+import get from 'lodash.get'
+import React from 'react'
+import { useQuery } from 'react-apollo'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { GET_CATEGORIES } from '../apollo/queries'
 import BackButton from '../components/BackButton'
+import BackgroundContainer from '../components/BackgroundContainer'
+import CategoryListItem from '../components/CategoryListItem'
+import LegoLoader from '../components/LegoLoader'
+import { Category } from '../interfaces/Category'
 
 const CategoryScreen = () => {
   const { data, loading } = useQuery(GET_CATEGORIES)
@@ -36,19 +35,7 @@ const CategoryScreen = () => {
         <ScrollView style={styles.container}>
           {categories.map((category, index) => (
             <View key={index} style={styles.buttonContainer}>
-              <Button
-                style={
-                  [
-                    {
-                      backgroundColor: category.color,
-                      borderColor: color(category.color).darken(0.2),
-                    },
-                  ] as any
-                }
-                onPress={handlePressCategory(category._id)}
-              >
-                {category.name}
-              </Button>
+              <CategoryListItem category={category} onPress={handlePressCategory(category._id)} />
             </View>
           ))}
         </ScrollView>
@@ -58,14 +45,13 @@ const CategoryScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    paddingVertical: 10,
+  },
   container: {
     paddingHorizontal: 20,
     marginTop: 10,
   },
-  buttonContainer: {
-    paddingVertical: 10,
-  },
-  button: {},
 })
 
 export default CategoryScreen
