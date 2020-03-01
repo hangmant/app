@@ -18,9 +18,9 @@ const Keyboard = React.memo(
 
     return (
       <View>
-        {letterColumns.map(letters => {
+        {letterColumns.map((letters, index) => {
           return (
-            <View style={styles.letterColumn}>
+            <View key={index} style={styles.letterColumn}>
               {letters.map((letter: string) => {
                 const isDisabled =
                   correctLetters.has(letter.toLowerCase()) ||

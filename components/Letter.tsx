@@ -57,8 +57,9 @@ const styles = StyleSheet.create<any>({
     borderColor: color(LetterColors.INCORRECT).darken(0.2),
   },
   text: {
-    fontSize: 20,
+    fontSize: 22,
     color: '#6b7073',
+    lineHeight: 26,
     fontWeight: 'bold',
     marginHorizontal: 0,
   },

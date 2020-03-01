@@ -21,7 +21,7 @@ export const useWordManager = ({
 
   const [getRandomWords] = useImperativeQuery(GET_RANDOM_WORDS, {
     variables: {
-      ...(categoryId ? { categoryId } : {}),
+      ...(categoryId && categoryId !== 'undefined' ? { categoryId } : {}),
     },
   })
 

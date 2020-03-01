@@ -18,7 +18,9 @@ interface ManProps {
 
 const Man: React.FC<ManProps> = React.memo(({ lives }) => (
   <View style={styles.container}>
-    <Image style={styles.image} source={images[lives]} />
+    <View style={styles.imageContainer}>
+      <Image style={styles.image} source={images[lives]} />
+    </View>
   </View>
 ))
 
@@ -26,13 +28,17 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
+  imageContainer: {
+    borderLeftColor: '#61463c',
+    borderTopColor: '#61463c',
+    borderLeftWidth: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    borderTopLeftRadius: 6,
+    borderTopWidth: 10,
+  },
   image: {
     width: 73,
-    borderLeftColor: '#61463c',
-    paddingLeft: 30,
-    borderTopColor: '#61463c',
-    borderLeftWidth: 8,
-    borderTopWidth: 8,
     height: 195,
   },
 })
