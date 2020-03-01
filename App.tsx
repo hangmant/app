@@ -6,13 +6,12 @@ import { ApplicationProvider } from '@ui-kitten/components'
 import { SplashScreen } from 'expo'
 import * as Font from 'expo-font'
 import * as React from 'react'
-import { Platform, StatusBar, StyleSheet, View, ImageBackground } from 'react-native'
+import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native'
 import ApolloProvider from './apollo/ApolloProvider'
 import useLinking from './navigation/useLinking'
 import CategoryScreen from './screens/CategoryScreen'
 import GameScreen from './screens/GameScreen'
 import HomeScreen from './screens/HomeScreen'
-import { screenOptions } from './utils/transitionConfig'
 
 const Stack = createStackNavigator()
 

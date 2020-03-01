@@ -37,14 +37,16 @@ const GameScreen = () => {
   console.log('Dante: GameScreen -> word', word)
 
   const handlePressKey = (letter: string) => {
-    const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
-    if (existsLetter) {
-      addCorrectLetter(letter)
-      setWordToFill(w => fillWithLetter(word.name, w, letter))
-    } else {
-      setLives(prev => prev - 1)
-      addIncorrectLetter(letter)
-      // Restar vidas
+    if (!resultVisible) {
+      const existsLetter = word.name.split('').some(c => areEqualsLowercase(c, letter))
+      if (existsLetter) {
+        addCorrectLetter(letter)
+        setWordToFill(w => fillWithLetter(word.name, w, letter))
+      } else {
+        setLives(prev => prev - 1)
+        addIncorrectLetter(letter)
+        // Restar vidas
+      }
     }
   }
 
