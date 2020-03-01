@@ -12,6 +12,7 @@ import ResultGame from '../components/ResultGame'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import CategoryGame from '../components/CategoryGame'
 import LegoLoader from '../components/LegoLoader'
+import BackButton from '../components/BackButton'
 
 const NUMBER_OF_LIVES = 7
 
@@ -86,6 +87,7 @@ const GameScreen = () => {
         onClickNext={handleClickNext}
       />
       <BackgroundContainer>
+        <BackButton onPress={() => navigation.goBack()} />
         {loading || !word ? (
           <LegoLoader />
         ) : (

@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import color from 'color'
 import BackgroundContainer from '../components/BackgroundContainer'
 import LegoLoader from '../components/LegoLoader'
+import BackButton from '../components/BackButton'
 
 const CategoryScreen = () => {
   const { data, loading } = useQuery(GET_CATEGORIES)
@@ -28,6 +29,7 @@ const CategoryScreen = () => {
 
   return (
     <BackgroundContainer>
+      <BackButton onPress={() => navigation.goBack()} />
       {loading ? (
         <LegoLoader />
       ) : (
@@ -58,6 +60,7 @@ const CategoryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
+    marginTop: 10,
   },
   buttonContainer: {
     paddingVertical: 10,
