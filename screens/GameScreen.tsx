@@ -11,6 +11,7 @@ import { usePressedLetters } from '../hooks/usePressedLetters'
 import ResultGame from '../components/ResultGame'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import CategoryGame from '../components/CategoryGame'
+import LegoLoader from '../components/LegoLoader'
 
 const NUMBER_OF_LIVES = 7
 
@@ -82,20 +83,22 @@ const GameScreen = () => {
         onClickBack={goToHome}
         onClickNext={handleClickNext}
       />
-      {loading || !word ? (
-        <Text>Loading</Text>
-      ) : (
-        <BackgroundContainer>
-          <CategoryGame word={word} />
-          <Man lives={lives} />
-          <Filler wordToFill={wordToFill} />
-          <Keyboard
-            onPressKey={handlePressKey}
-            correctLetters={correct}
-            incorrectLetters={incorrect}
-          />
-        </BackgroundContainer>
-      )}
+      <BackgroundContainer>
+        {loading || !word ? (
+          <LegoLoader />
+        ) : (
+          <React.Fragment>
+            <CategoryGame word={word} />
+            <Man lives={lives} />
+            <Filler wordToFill={wordToFill} />
+            <Keyboard
+              onPressKey={handlePressKey}
+              correctLetters={correct}
+              incorrectLetters={incorrect}
+            />
+          </React.Fragment>
+        )}
+      </BackgroundContainer>
     </View>
   )
 }

@@ -58,7 +58,7 @@ export default function App(props) {
             style={{ width: '100%', height: '100%' }}
           >
             <View style={styles.container}>
-              {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
+              <StatusBar barStyle='dark-content' />
               <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
                 <Stack.Navigator headerMode='none'>
                   <Stack.Screen name='Root' component={HomeScreen} />

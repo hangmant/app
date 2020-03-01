@@ -7,9 +7,11 @@ import get from 'lodash.get'
 import { Category } from '../interfaces/Category'
 import { useNavigation } from '@react-navigation/native'
 import color from 'color'
+import BackgroundContainer from '../components/BackgroundContainer'
+import LegoLoader from '../components/LegoLoader'
 
 const CategoryScreen = () => {
-  const { data } = useQuery(GET_CATEGORIES)
+  const { data, loading } = useQuery(GET_CATEGORIES)
   const navigation = useNavigation()
 
   const categories: Category[] = [
@@ -25,25 +27,31 @@ const CategoryScreen = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      {categories.map((category, index) => (
-        <View key={index} style={styles.buttonContainer}>
-          <Button
-            style={
-              [
-                {
-                  backgroundColor: category.color,
-                  borderColor: color(category.color).darken(0.2),
-                },
-              ] as any
-            }
-            onPress={handlePressCategory(category._id)}
-          >
-            {category.name}
-          </Button>
-        </View>
-      ))}
-    </ScrollView>
+    <BackgroundContainer>
+      {loading ? (
+        <LegoLoader />
+      ) : (
+        <ScrollView style={styles.container}>
+          {categories.map((category, index) => (
+            <View key={index} style={styles.buttonContainer}>
+              <Button
+                style={
+                  [
+                    {
+                      backgroundColor: category.color,
+                      borderColor: color(category.color).darken(0.2),
+                    },
+                  ] as any
+                }
+                onPress={handlePressCategory(category._id)}
+              >
+                {category.name}
+              </Button>
+            </View>
+          ))}
+        </ScrollView>
+      )}
+    </BackgroundContainer>
   )
 }
 
