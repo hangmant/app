@@ -3,8 +3,13 @@ import { ImageBackground, View, StyleSheet } from 'react-native'
 
 const BackgroundContainer = ({ children }) => (
   <ImageBackground
-    source={require('../assets/images/background_home.png')}
-    style={{ width: '100%', height: '100%' }}
+    source={require('../assets/images/background_1.png')}
+    imageStyle={{ resizeMode: 'repeat' }}
+    style={{
+      width: '100%',
+      height: '100%',
+      paddingTop: 30,
+    }}
   >
     <View style={styles.childrenContainer}>{children}</View>
   </ImageBackground>
