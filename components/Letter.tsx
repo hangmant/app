@@ -1,6 +1,14 @@
-import { Button } from '@ui-kitten/components'
+import { Text } from '@ui-kitten/components'
+import color from 'color'
 import React from 'react'
 import { StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+
+enum LetterColors {
+  NORMAL = '#f5fdff',
+  CORRECT = '#a3f8a6',
+  INCORRECT = '#ff9393',
+}
 
 type LetterProps = {
   disabled: boolean
@@ -10,48 +18,48 @@ type LetterProps = {
 }
 
 const Letter = ({ children, disabled, isCorrect, ...props }: LetterProps) => (
-  <Button
+  <TouchableOpacity
     {...props}
     disabled={disabled}
-    textStyle={styles.text}
     style={[
       styles.button,
       disabled && isCorrect && styles.correctButton,
       disabled && !isCorrect && styles.incorrectButton,
     ]}
   >
-    {children}
-  </Button>
+    <Text style={styles.text}>{children}</Text>
+  </TouchableOpacity>
 )
 
 const styles = StyleSheet.create<any>({
   button: {
-    backgroundColor: '#f5fdff',
-    minHeight: 38,
-    height: 38,
-    minWidth: 32,
-    width: 32,
-    marginHorizontal: 4,
+    backgroundColor: LetterColors.NORMAL,
+    minHeight: 42,
+    height: 42,
+    minWidth: 36,
+    width: 36,
+    marginHorizontal: 2,
     marginVertical: 4,
-    borderTopWidth: 0,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
-    borderColor: '#5c5c5c57',
-
-    borderWidth: 2,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#5c5c5c52',
     paddingHorizontal: 0,
-    borderRadius: 8,
+    paddingVertical: 0,
+    borderRadius: 6,
   },
   correctButton: {
-    backgroundColor: '#a3f8a6',
+    backgroundColor: LetterColors.CORRECT,
+    borderColor: color(LetterColors.CORRECT).darken(0.2),
   },
   incorrectButton: {
-    backgroundColor: '#ff9393',
+    backgroundColor: LetterColors.INCORRECT,
+    borderColor: color(LetterColors.INCORRECT).darken(0.2),
   },
   text: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 20,
     color: '#6b7073',
+    fontWeight: 'bold',
     marginHorizontal: 0,
   },
 })
