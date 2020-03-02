@@ -6,12 +6,10 @@ import Button from '../components/GameButton'
 import LogoHome from '../components/LogoHome'
 
 export default function HomeScreen({ navigation }) {
-  console.log('Dante: HomeScreen -> navigation', navigation)
-
   const handlePressPlay = () => {
     navigation.navigate('Categories')
-    console.log('clickeado')
   }
+
   return (
     <View style={styles.container}>
       <BackgroundContainer>
