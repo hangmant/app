@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   menuOptions: {
-    marginBottom: 50,
+    marginBottom: 40,
     paddingVertical: 20,
     justifyContent: 'center',
   },

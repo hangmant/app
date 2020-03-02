@@ -11,13 +11,13 @@ enum LetterColors {
 }
 
 type LetterProps = {
-  disabled: boolean
-  isCorrect: boolean
+  disabled?: boolean
+  isCorrect?: boolean
   children: string
   [key: string]: any
 }
 
-const Letter = ({ children, disabled, isCorrect, ...props }: LetterProps) => (
+const Letter = ({ children, disabled = false, isCorrect = false, ...props }: LetterProps) => (
   <TouchableOpacity
     {...props}
     disabled={disabled}
