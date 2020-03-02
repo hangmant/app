@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Text, Modal, Layout, Button } from '@ui-kitten/components'
+import { Button, Layout, Modal, Text } from '@ui-kitten/components'
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 const ResultGame = ({
@@ -13,16 +13,18 @@ const ResultGame = ({
     <>
       <Modal backdropStyle={styles.backdrop} onBackdropPress={onClose} visible={visible}>
         <Layout level='3' style={styles.modalContainer}>
-          <Text style={styles.resultText}>{win ? 'You win' : 'You loose'}</Text>
+          <Text style={styles.resultText}>{win ? 'You Win' : 'You Loose'}</Text>
           <View style={styles.actionsContainer}>
             <View style={styles.buttonContainer}>
-              <Button onPress={onClickBack} appearance='outline'>
+              <Button onPress={onClickBack} status='danger' appearance='outline'>
                 Back To Menu
               </Button>
             </View>
-            <View style={styles.buttonContainer}>
-              <Button onPress={onClickNext}>Next Word</Button>
-            </View>
+            {win && (
+              <View style={styles.buttonContainer}>
+                <Button onPress={onClickNext}>Next Word</Button>
+              </View>
+            )}
           </View>
         </Layout>
       </Modal>
@@ -41,11 +43,21 @@ const styles = StyleSheet.create({
     width: 300,
     padding: 16,
   },
+  animationContainer: {
+    width: 100,
+    height: 100,
+  },
+  animation: {
+    width: 100,
+    height: 100,
+  },
   actionsContainer: {
     flexDirection: 'row',
   },
   resultText: {
-    fontSize: 28,
+    fontSize: 30,
+    lineHeight: 40,
+    color: '#44312a',
     marginVertical: 30,
     fontWeight: 'bold',
   },
