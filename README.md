@@ -1,4 +1,4 @@
-# Hangman App
+# Hangwoman App
 
 ## Thanks to:
 
